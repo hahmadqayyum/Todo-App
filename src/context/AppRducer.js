@@ -31,6 +31,26 @@ export default function AppReducer(state, action) {
             }
         }
 
+
+        case 'UPDATE_HANDLER': {
+            const newList = state.Todos.map(item => {
+                if (item.id === action.payload.id) {
+
+                    const newTodoList = {
+                        ...item,
+                        Text: action.payload.Text
+                    }
+                    return newTodoList
+                }
+                return item
+            });
+            return {
+                ...state,
+                Todos: newList
+            }
+        }
+
+
         case 'completed':
             return {
                 ...state,
@@ -47,7 +67,7 @@ export default function AppReducer(state, action) {
             return {
                 ...state,
                 filteredTodos: [...state.Todos]
-                    
+
             }
     }
 

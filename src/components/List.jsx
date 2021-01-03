@@ -8,7 +8,7 @@ const List = () => {
         <ul>
             {
                 filteredTodos.map(item => (
-                    <li>
+                    <li key={item.id}>
                         <ListItem key={item.id} Todo={item} />
                     </li>
                 ))

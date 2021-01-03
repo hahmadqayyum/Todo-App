@@ -44,6 +44,14 @@ export const GlobalStateProvider = ({ children }) => {
         })
     }
 
+    const updateHandler = data => {
+        // console.log(data)
+        dispatch({
+            type: 'UPDATE_HANDLER',
+            payload: { id: data.id, Text: data.editedText }
+        })
+    }
+
     return (
         <GlobalState.Provider
             value={{
@@ -52,7 +60,8 @@ export const GlobalStateProvider = ({ children }) => {
                 addTodosFunction,
                 deleteTodoItem,
                 completeHandler,
-                filterHandler
+                filterHandler,
+                updateHandler
             }}
         >
             {children}
